@@ -12,3 +12,9 @@ if (pedido.pago) {
 } else {
     console.log('Status: aguardando pagamento')
 }
+
+if (pedido.valor >= 200) {
+    console.log('Elegível para desconto na próxima compra')
+} else {
+    console.log('Não elegível para desconto')
+}
