@@ -11,6 +11,12 @@ function exibirFicha(produto) {
 
     let valorTotalEstoque = produto.preco * produto.estoque
     console.log(`Valor total em estoque: R$ ${valorTotalEstoque}`)
+
+    if (produto.estoque <= 5) {
+        console.log('Situação do estoque: baixo')
+    } else {
+        console.log('Situação do estoque: normal')
+    }
 }
 
 exibirFicha(produto)
