@@ -14,3 +14,9 @@ if (aluno.ativo) {
 } else {
     console.log('Situação: aluno(a) inativo')
 }
+
+if (aluno.idade >= 18) {
+    console.log("Maior de idade: sim")
+} else {
+    console.log("Maior de idade: não")
+}
