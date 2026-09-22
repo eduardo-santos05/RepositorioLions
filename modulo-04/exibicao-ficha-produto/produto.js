@@ -5,7 +5,7 @@ let produto = {
 }
 
 function exibirFicha(produto) {
-    console.log(`Nome: ${produto.nome}`)
+    console.log(`Produto: ${produto.nome}`)
     console.log(`Preço: R$ ${produto.preco}`)
     console.log(`Estoque: ${produto.estoque}`)
 }
