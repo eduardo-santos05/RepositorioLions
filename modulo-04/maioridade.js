@@ -1,5 +1,5 @@
 const nome = "Pedro";
-const idade = 20;
+const idade = 15;
 
 console.log("Nome: " + nome);
 console.log("Idade: " + idade);
