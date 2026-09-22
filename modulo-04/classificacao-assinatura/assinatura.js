@@ -15,3 +15,9 @@ if (assinatura.mesesAtivos < 6) {
 } else {
     console.log("Classificação: cliente veterano")
 }
+
+if (assinatura.plano === 'Premium') {
+    console.log('Prioridade no suporte: sim')
+} else {
+    console.log('Prioridade no suporte: não')
+}
