@@ -3,10 +3,11 @@ import Tarefa from './Tarefa.js'
 
 let tarefas = await Tarefa.find()
 
-let cont = 1
+let posicao = 0
 let pendentes = 0
 tarefas.forEach((tarefa) => {
-    console.log(`${cont++}. [${tarefa.concluida ? "x" : " "}] ${tarefa.titulo}`)
+    console.log(`[${posicao++}] ${tarefa._id}`)
+    console.log(`   [${tarefa.concluida ? "x" : " "}] ${tarefa.titulo}`)
     if (!tarefa.concluida) {
         pendentes++
     }

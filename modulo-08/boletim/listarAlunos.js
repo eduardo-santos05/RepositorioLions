@@ -15,6 +15,7 @@ for (let i = 0; i < alunos.length; i++) {
     } else {
         status = "Reprovado";
     }
+    console.log(`[${i}] ${aluno._id}`)
     console.log(`- ${aluno.nome}: média ${media} (${status})`);
 }
 console.log(`Aprovados: ${aprovados} de ${alunos.length}`);

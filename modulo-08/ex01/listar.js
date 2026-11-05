@@ -1,7 +1,7 @@
 import mongoose from '../conexao.js'
 import Produto from './Produto.js'
 
-let produtos = await Produto.find({ categoria: "Periféricos", estoque: 10 })
+let produtos = await Produto.find()
 console.log("Total de produtos: " + produtos.length)
 
 let valorTotal = 0

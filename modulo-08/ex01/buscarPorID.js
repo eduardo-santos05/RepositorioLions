@@ -1,7 +1,7 @@
 import mongoose from '../conexao.js'
 import Produto from './Produto.js'
 
-let id = "6ae9d3aa1829aa907e7a959e"
+let id = "6aec6847e74bb8503840322e"
 
 let produto = await Produto.findById(id)
 
