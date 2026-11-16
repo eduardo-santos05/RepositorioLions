@@ -2,16 +2,10 @@ import mongoose from '../../conexao.js'
 import Pets from './Pets.js'
 
 let pets = await Pets.find()
-let posicao = null
-for (let i = 0; i < pets.length; i++) {
-    if (pets[i].nome === "Mimi") {
-        posicao = i
-        break
-    }
-}
+let posicao = 2
 
-if (posicao === null) {
-    console.log("Pet não encontrado")
+if (posicao >= pets.length) {
+    console.log("Não existe pet cadastrado na posição informada")
 } else {
     let id = pets[posicao]._id
     let removido = await Pets.findByIdAndDelete(id)

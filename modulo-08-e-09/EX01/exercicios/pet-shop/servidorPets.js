@@ -20,6 +20,11 @@ router.post("/pets", async (req, res) => {
     }
 
     let pet = await Pets.create(req.body)
+
+    if (pet.especie.toLowerCase() === "peixe") {
+        return res.status(400).send({ erro: "Pet validation failed: especie: Peixe não é uma espécie atendida" })
+    }
+
     res.status(201).send(pet)
 })
 

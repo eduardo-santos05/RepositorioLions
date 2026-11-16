@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 let itensSchema = new mongoose.Schema({
     nome: { type: String },
     preco: { type: Number },
-    quantidade: { type: Number }
+    quantidade: { type: Number, default: 1 }
 })
 
 let Item = mongoose.model('Item', itensSchema)

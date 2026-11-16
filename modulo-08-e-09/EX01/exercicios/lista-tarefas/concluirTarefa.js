@@ -3,16 +3,10 @@ import Tarefa from './Tarefa.js'
 
 let tarefas = await Tarefa.find()
 
-let posicao = null
-for (let i = 0; i < tarefas.length; i++) {
-    if (tarefas[i].titulo === "Fazer a lista") {
-        posicao = i
-        break
-    }
-}
+let posicao = 1
 
-if (posicao === null) {
-    console.log("Tarefa não encontrada")
+if (posicao >= tarefas.length) {
+    console.log("Tarefa não encontrada nessa posição")
 } else {
     let id = tarefas[posicao]._id
     await Tarefa.findByIdAndUpdate(id, {concluida: true})

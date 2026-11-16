@@ -3,7 +3,7 @@ import Item from "./Item.js"
 
 let itens = await Item.find()
 
-let posicao = indiceFeijao
+let posicao = 1
 
 if (posicao >= itens.length) {
     console.log("Não existe item cadastrado na posição informada")

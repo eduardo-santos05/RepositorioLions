@@ -3,7 +3,7 @@ import Curso from './Curso.js'
 
 let cursos = await Curso.find()
 
-let posicao = indiceJavaScript
+let posicao = 0
 
 if (posicao >= cursos.length) {
     console.log("Não existe curso cadastrado na posição informada")
