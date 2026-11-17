@@ -1,6 +1,8 @@
 import express from 'express'
-import mongoose from '../../conexao.js'
+import mongoose from '../../../conexao.js'
 import Curso from './Curso.js'
+import { login } from './login.js'
+import { autenticar } from './autenticar.js'
 
 const router = express()
 const port = 3000
@@ -21,7 +23,9 @@ router.get("/cursos/:id", async (req, res) => {
     res.send(curso)
 })
 
-router.post("/cursos", async (req, res) => {
+router.post("/login", login)
+
+router.post("/cursos", autenticar, async (req, res) => {
     let erro = new Curso(req.body).validateSync()
 
     if (erro) {

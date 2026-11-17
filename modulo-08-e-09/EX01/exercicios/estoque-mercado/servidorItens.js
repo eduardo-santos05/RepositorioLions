@@ -1,6 +1,8 @@
 import express from 'express'
-import mongoose from '../../conexao.js'
+import mongoose from '../../../conexao.js'
 import Item from './Item.js'
+import { autenticar } from './autenticar.js'
+import { login } from './login.js'
 
 const router = express()
 const port = 3000
@@ -11,7 +13,10 @@ router.get("/itens", async (req, res) => {
     res.send(itens)
 })
 
-router.post("/itens", async (req, res) => {
+router.post("/login", login)
+
+router.post("/itens", autenticar, async (req, res) => {
+    req.body.cadastradoPor = { nome: req.usuario.nome }
     let erro = new Item(req.body).validateSync()
 
     if (erro) {
@@ -23,7 +28,7 @@ router.post("/itens", async (req, res) => {
     res.status(201).send(item)
 })
 
-router.delete("/itens/:id", async (req, res) => {
+router.delete("/itens/:id", autenticar, async (req, res) => {
     if (!mongoose.isValidObjectId(req.params.id)) {
         return res.status(400).send({ erro: "ID inválido!" })
     }

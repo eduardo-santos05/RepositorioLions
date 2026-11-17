@@ -1,6 +1,8 @@
 import express from 'express'
-import mongoose from '../../conexao.js'
+import mongoose from '../../../conexao.js'
 import Tarefa from './Tarefa.js'
+import { login } from './login.js'
+import { autenticar } from './autenticar.js'
 
 const router = express()
 const port = 3000
@@ -11,7 +13,9 @@ router.get("/tarefas", async (req, res) => {
     res.send(tarefas)
 })
 
-router.post("/tarefas", async (req, res) => {
+router.post("/login", login)
+
+router.post("/tarefas", autenticar, async (req, res) => {
     let erro = new Tarefa(req.body).validateSync()
 
     if (erro) {
@@ -23,7 +27,7 @@ router.post("/tarefas", async (req, res) => {
     res.status(201).send(tarefa)
 })
 
-router.put("/tarefas", async (req, res) => {
+router.put("/tarefas/:id", autenticar, async (req, res) => {
     if (!mongoose.isValidObjectId(req.params.id)) {
         return res.status(400).send({ erro: "ID inválido!" })
     }

@@ -1,6 +1,9 @@
 import express from 'express'
-import mongoose from '../../conexao.js'
+import mongoose from '../../../conexao.js'
+import jwt from 'jsonwebtoken'
 import Pets from './Pets.js'
+import { login } from './login.js'
+import { autenticar } from './autenticar.js'
 
 const router = express()
 const port = 3000
@@ -12,7 +15,7 @@ router.get("/pets", async (req, res) => {
     res.send(pets)
 })
 
-router.post("/pets", async (req, res) => {
+router.post("/pets", autenticar, async (req, res) => {
     let erro = new Pets(req.body).validateSync()
 
     if (erro) {
@@ -27,6 +30,8 @@ router.post("/pets", async (req, res) => {
 
     res.status(201).send(pet)
 })
+
+router.post("/login", login)
 
 router.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`)

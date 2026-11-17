@@ -1,4 +1,3 @@
-
 import jwt from 'jsonwebtoken'
 
 export function autenticar(req, res, next) {
@@ -13,7 +12,7 @@ export function autenticar(req, res, next) {
     }
 
     try {
-        let dadosToken = jwt.verify(partes[1], process.env.JWT) // partes[1] é o token
+        let dadosToken = jwt.verify(partes[1], process.env.JWT_SECRET) // partes[1] é o token
         req.usuario = { email: dadosToken.email, nome: dadosToken.nome }
         next()
     } catch (erro) {
